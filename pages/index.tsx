@@ -6,7 +6,7 @@ import LotteryEntrance from "../components/LotteryEntrance"
 
 export default function Home() {
     return (
-        <div className={styles.container}>
+        <div className="text-center sm:text-left dark:bg-slate-800 h-screen">
             <Head>
                 <title>Smart Contract Lottery</title>
                 <meta name="description" content="Our Smart Contract Lottery" />

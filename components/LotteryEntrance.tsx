@@ -87,7 +87,7 @@ export default function LotteryEntrance() {
 
     return (
         <div className="p-5">
-            Hi from lottery entrance!
+            <p className="dark:text-white">Hi from lottery entrance!</p>
             {raffleAddress ? (
                 <div className="">
                     <button
@@ -95,6 +95,7 @@ export default function LotteryEntrance() {
                         onClick={async function () {
                             await enterRaffle({
                                 onSuccess: (tx) => handleSuccess(tx as ContractTransaction),
+                                onError: (error) => console.error("enterRaffle Error:", error),
                             })
                         }}
                         disabled={isLoading || isFetching}
@@ -102,15 +103,17 @@ export default function LotteryEntrance() {
                         {isLoading || isFetching ? (
                             <div className="animate-spin spinner-border h-8 w-8 border-b-2 rounded-full"></div>
                         ) : (
-                            <div>Enter Raffle</div>
+                            <div className="dark:text-white">Enter Raffle</div>
                         )}
                     </button>
-                    <div>Entrance Fee: {ethers.utils.formatUnits(entranceFee, "ether")} ETH</div>
-                    <div>Number Of Players: {numPlayers} </div>
-                    <div> Recent Winner: {recentWinner} </div>
+                    <div className="dark:text-white">
+                        Entrance Fee: {ethers.utils.formatUnits(entranceFee, "ether")} ETH
+                    </div>
+                    <div className="dark:text-white">Number Of Players: {numPlayers} </div>
+                    <div className="dark:text-white"> Recent Winner: {recentWinner} </div>
                 </div>
             ) : (
-                <div>No Raffle Address Deteched</div>
+                <div className="dark:text-white">No Raffle Address Deteched</div>
             )}
         </div>
     )
